@@ -27,7 +27,7 @@ final_output = pinkMorselsOnly[["sales", "date", "region"]].copy()
 
 #save to a csv file
 final_output["date"] = ps.to_datetime(final_output["date"])
-final_output = final_output.sort_values(by=["date"], ascending=False)
+final_output = final_output.sort_values(["date", "region"]).reset_index(drop=True)
 final_output.to_csv("outputfile.csv", index = False)
 print(" Done! Created outputfile.csv")
 print(final_output.head())
